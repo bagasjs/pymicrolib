@@ -3,11 +3,13 @@ A list of single file micro library for Python
 
 ### List of library
 
+-------------------------------------------------------------------------------------------------
 | Name      | Status          | Description                                                     |
 -------------------------------------------------------------------------------------------------
 | cask.py   | Usable          | Cask is a simple library for building a CLI application         |
 | barrel.py | Inconvinient    | Barrel is a simple ORM library that only supports sqlite3       |
 | bucket.py | Not Implemented | Bucket is a small library for building simple web applications. |
+-------------------------------------------------------------------------------------------------
 
 
 ### FAQ
