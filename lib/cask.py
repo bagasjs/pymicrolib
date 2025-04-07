@@ -98,10 +98,10 @@ class Command(object):
         return self
 
     def parse_args(self, args: List[str]) -> Tuple[List[Any], Dict[str, Any], Error]:
+        args_length = len(args)
         opts: Dict[str, Any] = {}
         parsed_args: List[Any] = []
-        cmd_args_length = len(parsed_args)
-        args_length = len(args)
+        cmd_args_length = len(self.args)
 
         for i, opt in enumerate(self.opts):
             opts[opt.name] = opt.default_value
@@ -136,11 +136,11 @@ class Command(object):
                     return ([], {}, f"Unknown option: {opt_name}")
             else:
                 if len(parsed_args) + 1 <= cmd_args_length:
-                    arg_info = self.args[cmd_args_length - 1]
+                    arg_info = self.args[len(parsed_args)]
                     parsed_arg, err = parse_value(arg, arg_info.kind)
                     if err is not None:
                         return ([], {}, err)
-                    parsed_args[len(parsed_args) - 1] = parsed_arg
+                    parsed_args.append(parsed_arg)
             i += 1
 
         if len(parsed_args) < cmd_args_length:
