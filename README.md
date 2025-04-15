@@ -6,6 +6,7 @@ A list of single file micro library for Python
 | Name      | Status          | Description                                                     |
 |-----------|-----------------|-----------------------------------------------------------------|
 | cask.py   | Usable          | Cask is a simple library for building a CLI application         |
+| bowl.py   | Usable          | Bowl is a simple micro library for parsing HTML                 |
 | barrel.py | Inconvenient    | Barrel is a simple ORM library that only supports SQLite3       |
 | bucket.py | Not Implemented | Bucket is a small library for building simple web applications. |
 
@@ -20,7 +21,7 @@ The library is already implemented
 The library has an implementation, but not really usable or maybe inconvenient to use.
 
 - Not Implemented
-There's a design or idea for this library but there's no implementation currently
+There's a design or idea for this library but I am planning to implement it in the future.
 
 #### How do I use the library?
 The idea behind these libraries is that they're easy to distribute and deploy because 
@@ -36,7 +37,7 @@ convenient
 
 #### Is the library safe?
 I never thought about safety when developing this libraries. You can use these libraries for
-prototyping. I recommend use another libraries like FastAPI, Django, Flask, SQLAlchemy, etc.
+prototyping. I recommend use another libraries like FastAPI, Django, Flask, SQLAlchemy, etc. 
 
 #### Why Python?
 I, actually, have implemented these of libraries in another language (which is Go) first, 
