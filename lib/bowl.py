@@ -235,23 +235,18 @@ class _CustomHTMLParser(HTMLParser):
     def __init__(self, source: str):
         super().__init__()
         self.source = source
-        self.root_node = None
+        self.root_node = DOMNode("DOCUMENT_ROOT", {})
         self.title = None
-        self.node_stack = []
+        self.node_stack = [ self.root_node ]
 
     def handle_starttag(self, tag, attrs):
         dom_attrs = {}
         for key, value in attrs:
             dom_attrs[key] =  value
         dom = DOMNode(tag, dom_attrs)
-        if self.root_node is None:
-            # TODO: what if the root_node is VOID_TAGS?
-            self.root_node = dom
+        self.node_stack[-1].append_child(dom)
+        if tag not in VOID_TAGS:
             self.node_stack.append(dom)
-        else:
-            self.node_stack[-1].append_child(dom)
-            if tag not in _VOID_TAGS:
-                self.node_stack.append(dom)
 
     def handle_endtag(self, tag):
         if tag == self.node_stack[-1].tag:
@@ -287,6 +282,7 @@ class _CustomHTMLParser(HTMLParser):
 
     def accumulate(self) -> Optional[DOMNode]:
         self.feed(self.source)
+        assert self.root_node == self.node_stack[0]
         return self.root_node
 
 def parse_document(source: str) -> Optional[DOMDocument]:
